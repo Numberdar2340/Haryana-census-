@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haryana District Portal</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { background:#f0f0f0; }
+    a { text-decoration:none; color:inherit; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+    header img { height:50px; }
+    header .title { text-align:center; flex:1; }
+    header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
+    header .title p { font-size:0.9em; color:#333; }
+    #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
+    #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
+    #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+    #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
+    #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
+    #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
+    .district-card { background:#fff; padding:20px; border-radius:10px; width:150px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .district-card:hover { transform: translateY(-5px); }
+    .district-card h3 { margin:0 0 10px 0; color:#333; }
+    .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
+    footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
+    @media(max-width:600px){ .district-card { width:45%; margin-bottom:20px; } header { flex-direction:column; gap:10px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Haryana_Seal.svg/1200px-Haryana_Seal.svg.png" alt="Haryana Logo">
+    <div class="title">
+      <h1>Haryana Government</h1>
+      <p>हरियाणा सरकार | Government of Haryana</p>
+    </div>
+  </header>
+
+  <!-- District selection dropdown -->
+  <section id="district-select-section">
+    <h2>Select District</h2>
+    <select id="district-dropdown">
+      <option value="">--Select District--</option>
+      <option value="ambala">Ambala</option>
+      <option value="bhiwani">Bhiwani</option>
+      <option value="charkhi-dadri">Charkhi Dadri</option>
+      <option value="faridabad">Faridabad</option>
+      <option value="fatehabad">Fatehabad</option>
+      <option value="gurugram">Gurugram</option>
+      <option value="hissar">Hissar</option>
+      <option value="jhajjar">Jhajjar</option>
+      <option value="jind">Jind</option>
+      <option value="kaithal">Kaithal</option>
+      <option value="karnal">Karnal</option>
+      <option value="kurukshetra">Kurukshetra</option>
+      <option value="mahendragarh">Mahendragarh</option>
+      <option value="palwal">Palwal</option>
+      <option value="panipat">Panipat</option>
+      <option value="rewari">Rewari</option>
+      <option value="rohtak">Rohtak</option>
+      <option value="sirsa">Sirsa</option>
+      <option value="sonipat">Sonipat</option>
+      <option value="yamunanagar">Yamunanagar</option>
+    </select>
+  </section>
+
+  <!-- District Live Counter Section -->
+  <section id="district-counter">
+    <h2>District Live Counter</h2>
+    <div id="counter-container">
+      <div class="district-card"><h3>Ambala</h3><p id="ambala-count">0</p></div>
+      <div class="district-card"><h3>Bhiwani</h3><p id="bhiwani-count">0</p></div>
+      <div class="district-card"><h3>Charkhi Dadri</h3><p id="charkhi-dadri-count">0</p></div>
+      <div class="district-card"><h3>Faridabad</h3><p id="faridabad-count">0</p></div>
+      <div class="district-card"><h3>Fatehabad</h3><p id="fatehabad-count">0</p></div>
+      <div class="district-card"><h3>Gurugram</h3><p id="gurugram-count">0</p></div>
+      <div class="district-card"><h3>Hissar</h3><p id="hissar-count">0</p></div>
+      <div class="district-card"><h3>Jhajjar</h3><p id="jhajjar-count">0</p></div>
+      <div class="district-card"><h3>Jind</h3><p id="jind-count">0</p></div>
+      <div class="district-card"><h3>Kaithal</h3><p id="kaithal-count">0</p></div>
+      <div class="district-card"><h3>Karnal</h3><p id="karnal-count">0</p></div>
+      <div class="district-card"><h3>Kurukshetra</h3><p id="kurukshetra-count">0</p></div>
+      <div class="district-card"><h3>Mahendragarh</h3><p id="mahendragarh-count">0</p></div>
+      <div class="district-card"><h3>Palwal</h3><p id="palwal-count">0</p></div>
+      <div class="district-card"><h3>Panipat</h3><p id="panipat-count">0</p></div>
+      <div class="district-card"><h3>Rewari</h3><p id="rewari-count">0</p></div>
+      <div class="district-card"><h3>Rohtak</h3><p id="rohtak-count">0</p></div>
+      <div class="district-card"><h3>Sirsa</h3><p id="sirsa-count">0</p></div>
+      <div class="district-card"><h3>Sonipat</h3><p id="sonipat-count">0</p></div>
+      <div class="district-card"><h3>Yamunanagar</h3><p id="yamunanagar-count">0</p></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
+  </footer>
+
+  <script>
+    let districtData = {
+      ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:0, hissar:0,
+      jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0, panipat:0,
+      rewari:0, rohtak:0, sirsa:0, sonipat:0, yamunanagar:0
+    };
+
+    function updateCounters(){
+      for(let district in districtData){
+        districtData[district] += Math.floor(Math.random()*5);
+        let elem = document.getElementById(district+"-count");
+        if(elem) elem.innerText = districtData[district];
+      }
+    }
+    setInterval(updateCounters, 2000);
+  </script>
+
+</body>
+</html>
