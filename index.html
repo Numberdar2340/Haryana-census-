@@ -3,50 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haryana Census Portal</title>
+  <title>Haryana District Portal</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
     a { text-decoration:none; color:inherit; }
-
-    /* Banner */
-    #haryana-banner { display:flex; align-items:center; justify-content:space-between; 
-        background-color:#ffffff; padding:10px 20px; border-bottom:2px solid #000; }
-    #haryana-banner div { font-weight:bold; font-size:18px; color:#000; }
-    #haryana-banner img { width:80px; height:auto; }
-
-    /* Dropdown & form section */
-    section { padding:40px 20px; text-align:center; }
-    h2 { font-size:2em; margin-bottom:20px; color:#333; }
-    select, button { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
-    button { background:#007BFF; color:#fff; border:none; cursor:pointer; margin-left:10px; }
-    button:hover { background:#0056b3; }
-
-    /* District live counter */
+    header { display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+    header img { height:50px; }
+    header .title { text-align:center; flex:1; }
+    header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
+    header .title p { font-size:0.9em; color:#333; }
+    #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
+    #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
+    #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
     #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
+    #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
     #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
     .district-card { background:#fff; padding:20px; border-radius:10px; width:150px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
     .district-card:hover { transform: translateY(-5px); }
     .district-card h3 { margin:0 0 10px 0; color:#333; }
     .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
-
-    /* Footer */
     footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
-
-    @media(max-width:600px){
-      .district-card { width:45%; margin-bottom:20px; }
-      #haryana-banner { flex-direction:column; gap:10px; text-align:center; }
-    }
+    @media(max-width:600px){ .district-card { width:45%; margin-bottom:20px; } header { flex-direction:column; gap:10px; } }
   </style>
 </head>
 <body>
 
-  <!-- Haryana Logo Banner -->
-  <div id="haryana-banner">
-    <div>हरियाणा सरकार</div>
-    <div><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Emblem_of_Haryana.svg" alt="Haryana Logo"></div>
-    <div>Government of Haryana</div>
-  </div>
+  <!-- Header -->
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Haryana_Seal.svg/1200px-Haryana_Seal.svg.png" alt="Haryana Logo">
+    <div class="title">
+      <h1>Haryana Government</h1>
+      <p>हरियाणा सरकार | Government of Haryana</p>
+    </div>
+  </header>
 
   <!-- District selection dropdown -->
   <section id="district-select-section">
@@ -103,45 +93,12 @@
     </div>
   </section>
 
-  <!-- District Entry Form -->
-  <section id="district-form" style="background:#e9ecef; padding:40px 20px; text-align:center;">
-    <h2>Submit District Entry</h2>
-    <form id="entryForm">
-      <select id="districtSelect" required>
-        <option value="">--Select District--</option>
-        <option value="ambala">Ambala</option>
-        <option value="bhiwani">Bhiwani</option>
-        <option value="charkhi-dadri">Charkhi Dadri</option>
-        <option value="faridabad">Faridabad</option>
-        <option value="fatehabad">Fatehabad</option>
-        <option value="gurugram">Gurugram</option>
-        <option value="hissar">Hissar</option>
-        <option value="jhajjar">Jhajjar</option>
-        <option value="jind">Jind</option>
-        <option value="kaithal">Kaithal</option>
-        <option value="karnal">Karnal</option>
-        <option value="kurukshetra">Kurukshetra</option>
-        <option value="mahendragarh">Mahendragarh</option>
-        <option value="palwal">Palwal</option>
-        <option value="panipat">Panipat</option>
-        <option value="rewari">Rewari</option>
-        <option value="rohtak">Rohtak</option>
-        <option value="sirsa">Sirsa</option>
-        <option value="sonipat">Sonipat</option>
-        <option value="yamunanagar">Yamunanagar</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
-    <p id="formMsg" style="margin-top:15px; color:green;"></p>
-  </section>
-
   <!-- Footer -->
   <footer>
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
   </footer>
 
   <script>
-    // Live counter data
     let districtData = {
       ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:0, hissar:0,
       jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0, panipat:0,
@@ -156,17 +113,7 @@
       }
     }
     setInterval(updateCounters, 2000);
+  </script>
 
-    // Form submission
-    const form = document.getElementById('entryForm');
-    const msg = document.getElementById('formMsg');
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const district = document.getElementById('districtSelect').value;
-      if(district){
-        const countElem = document.getElementById(district + "-count");
-        if(countElem){
-          countElem.innerText = parseInt(countElem.innerText) + 1;
-        }
-        msg.innerText = `Entry submitted for
+</body>
+</html>
