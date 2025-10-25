@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haryana Census Registration</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin:0;
+    padding:0;
+}
+header {
+    background: #fff;
+    padding: 15px 50px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+header h1 {
+    color:#000;
+    font-size:1.8em;
+    margin:0;
+    text-align:center;
+}
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+form label {
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+form input[type="text"],
+form input[type="number"],
+form select {
+    width:100%;
+    padding:12px 15px;
+    margin-top:5px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:1em;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    background:#fff url('data:image/svg+xml;utf8,<svg fill="gray" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+    background-size:12px;
+    cursor:pointer;
+}
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #007BFF;
+    box-shadow:0 0 5px rgba(0,123,255,0.5);
+    outline:none;
+}
+.checkbox-group {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+.submit-btn {
+    margin-top:25px;
+    padding:12px 20px;
+    font-size:1em;
+    background:#007BFF;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.submit-btn:hover {
+    background:#0056b3;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Haryana Census Registration</h1>
+</header>
+
+<div class="container">
+<form id="registrationForm">
+    <label for="district">Select District</label>
+    <select id="district" required>
+        <option value="">--Select District--</option>
+        <option value="ambala">Ambala</option>
+        <option value="bhiwani">Bhiwani</option>
+        <option value="charkhi-dadri">Charkhi Dadri</option>
+        <option value="faridabad">Faridabad</option>
+        <option value="fatehabad">Fatehabad</option>
+        <option value="gurugram">Gurugram</option>
+        <option value="hissar">Hissar</option>
+        <option value="jhajjar">Jhajjar</option>
+        <option value="jind">Jind</option>
+        <option value="kaithal">Kaithal</option>
+        <option value="karnal">Karnal</option>
+        <option value="kurukshetra">Kurukshetra</option>
+        <option value="mahendragarh">Mahendragarh</option>
+        <option value="palwal">Palwal</option>
+        <option value="panipat">Panipat</option>
+        <option value="rewari">Rewari</option>
+        <option value="rohtak">Rohtak</option>
+        <option value="sirsa">Sirsa</option>
+        <option value="sonipat">Sonipat</option>
+        <option value="yamunanagar">Yamunanagar</option>
+    </select>
+
+    <label for="headName">Family Head Name</label>
+    <input type="text" id="headName" required>
+
+    <label for="members">Number of Family Members</label>
+    <input type="number" id="members" min="1" required>
+
+    <label for="relation">Relation with Head</label>
+    <select id="relation" required>
+        <option value="">--Select Relation--</option>
+        <option value="self">Self</option>
+        <option value="wife">Wife</option>
+        <option value="son">Son</option>
+        <option value="daughter">Daughter</option>
+        <option value="brother">Brother</option>
+        <option value="sister">Sister</option>
+    </select>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" min="0" required>
+
+    <label for="maritalStatus">Marital Status</label>
+    <select id="maritalStatus" required>
+        <option value="">--Select Status--</option>
+        <option value="married">Married</option>
+        <option value="unmarried">Unmarried</option>
+    </select>
+
+    <label for="caste">Caste</label>
+    <select id="caste" required>
+        <option value="">--Select Caste--</option>
+        <option value="General">General</option>
+        <option value="SC">SC</option>
+        <option value="ST">ST</option>
+        <option value="OBC">OBC</option>
+    </select>
+
+    <label for="religion">Religion</label>
+    <select id="religion" required>
+        <option value="">--Select Religion--</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Muslim">Muslim</option>
+        <option value="Sikh">Sikh</option>
+        <option value="Christian">Christian</option>
+    </select>
+
+    <label for="occupation">Occupation</label>
+    <select id="occupation" required>
+        <option value="">--Select Occupation--</option>
+        <option value="Farmer">Farmer</option>
+        <option value="Business">Business</option>
+        <option value="Student">Student</option>
+        <option value="Service">Service</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="study">Study</label>
+    <select id="study" required>
+        <option value="">--Select Study--</option>
+        <option value="School">School</option>
+        <option value="College">College</option>
+        <option value="Graduate">Graduate</option>
+        <option value="Postgraduate">Postgraduate</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label>Family Head Document Proof</label>
+    <div class="checkbox-group">
+        <input type="checkbox" id="aadhaar" value="Aadhaar"><label for="aadhaar">Aadhaar</label>
+        <input type="checkbox" id="pan" value="PAN"><label for="pan">PAN</label>
+        <input type="checkbox" id="passport" value="Passport"><label for="passport">Passport</label>
+        <input type="checkbox" id="familyId" value="Family ID"><label for="familyId">Family ID</label>
+    </div>
+    <label for="docNumber">Document Number</label>
+    <input type="text" id="docNumber" placeholder="Enter Document Number">
+
+    <button type="submit" class="submit-btn">Submit</button>
+</form>
+</div>
+
+<script>
+// Example: alert on submit, later can redirect or save to Firebase
+document.getElementById("registrationForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Registration submitted!");
+    // window.location.href = "nextpage.html"; // uncomment to redirect after submit
+});
+</script>
+
+</body>
+</html>
