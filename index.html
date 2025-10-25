@@ -8,37 +8,14 @@
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
     a { text-decoration:none; color:inherit; }
-
-    /* Header */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 50px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .header-left h1,
-    .header-right h1 {
-      font-weight: bold;
-      color: #000;
-      text-transform: uppercase;
-      font-size: 1.2em;
-      margin: 0;
-    }
-    .header-center img {
-      height: 60px;
-    }
-
-    /* District selection dropdown */
+    header { display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+    header img { height:50px; }
+    header .title { text-align:center; flex:1; }
+    header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
+    header .title p { font-size:0.9em; color:#333; }
     #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
     #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
     #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
-
-    /* District Live Counter Section */
     #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
     #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
     #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
@@ -46,15 +23,10 @@
     .district-card:hover { transform: translateY(-5px); }
     .district-card h3 { margin:0 0 10px 0; color:#333; }
     .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
-
-    /* Footer */
     footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
-
-    /* Responsive */
     @media(max-width:600px){ 
       .district-card { width:45%; margin-bottom:20px; } 
-      header { flex-direction: column; gap:10px; } 
-      .header-left, .header-right { text-align:center; }
+      header { flex-direction:column; gap:10px; } 
     }
   </style>
 </head>
@@ -62,16 +34,10 @@
 
   <!-- Header -->
   <header>
-    <div class="header-left">
-      <h1>हरियाणा सरकार</h1>
-    </div>
-
-    <div class="header-center">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Haryana_Seal.svg/1200px-Haryana_Seal.svg.png" alt="Haryana Logo">
-    </div>
-
-    <div class="header-right">
-      <h1>GOVERNMENT OF HARYANA</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Haryana_Seal.svg/1200px-Haryana_Seal.svg.png" alt="Haryana Logo">
+    <div class="title">
+      <h1>Haryana Government</h1>
+      <p>हरियाणा सरकार | Government of Haryana</p>
     </div>
   </header>
 
@@ -130,104 +96,6 @@
     </div>
   </section>
 
-  <section id="census-form" class="container">
-  <h2>Family Registration Form</h2>
-
-  <label>Family Head Name</label>
-  <input type="text" id="headName" placeholder="Enter Family Head Name">
-
-  <label>Marital Status</label>
-  <select id="maritalStatus">
-    <option value="">Select Status</option>
-    <option>Married</option>
-    <option>Unmarried</option>
-  </select>
-
-  <label>Relation with Head</label>
-  <select id="relation">
-    <option value="">Select Relation</option>
-    <option>Son</option>
-    <option>Daughter</option>
-    <option>Wife</option>
-    <option>Father</option>
-    <option>Mother</option>
-    <option>Brother</option>
-    <option>Sister</option>
-  </select>
-
-  <label>Age Group</label>
-  <select id="ageGroup">
-    <option value="">Select Age Group</option>
-    <option>0-5</option>
-    <option>6-12</option>
-    <option>13-18</option>
-    <option>19-35</option>
-    <option>36-50</option>
-    <option>51-65</option>
-    <option>66+</option>
-  </select>
-
-  <label>Caste</label>
-  <select id="caste">
-    <option value="">Select Caste</option>
-    <option>Brahmin</option>
-    <option>Chauhan</option>
-    <option>Rajput</option>
-    <option>Jat</option>
-    <option>SC</option>
-    <option>ST</option>
-    <option>OBC</option>
-    <option>Other</option>
-  </select>
-
-  <label>Religion</label>
-  <select id="religion">
-    <option value="">Select Religion</option>
-    <option>Hindu</option>
-    <option>Muslim</option>
-    <option>Sikh</option>
-    <option>Christian</option>
-    <option>Other</option>
-  </select>
-
-  <label>Occupation</label>
-  <select id="occupation">
-    <option value="">Select Occupation</option>
-    <option>Farmer</option>
-    <option>Business</option>
-    <option>Government Job</option>
-    <option>Private Job</option>
-    <option>Student</option>
-    <option>Other</option>
-  </select>
-
-  <label>Study</label>
-  <select id="study">
-    <option value="">Select Study Level</option>
-    <option>Primary</option>
-    <option>Secondary</option>
-    <option>Graduate</option>
-    <option>Postgraduate</option>
-    <option>Other</option>
-  </select>
-
-  <label>Document Proof</label>
-  <div class="checkbox-group">
-    <input type="checkbox" id="pan" value="PAN"> PAN
-    <input type="checkbox" id="aadhar" value="Aadhar"> Aadhar
-    <input type="checkbox" id="passport" value="Passport"> Passport
-    <input type="checkbox" id="dl" value="Driving License"> DL
-    <input type="checkbox" id="familyid" value="Family ID"> Family ID
-  </div>
-
-  <label>Document Number</label>
-  <input type="text" id="docNumber" placeholder="Enter Document Number">
-
-  <button onclick="submitForm()">Submit Registration</button>
-
-  <div id="preview"></div>
-</section>
-
   <!-- Footer -->
   <footer>
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
@@ -236,8 +104,8 @@
   <script>
     let districtData = {
       ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:0, hissar:0,
-      jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0, panipat:0,
-      rewari:0, rohtak:0, sirsa:0, sonipat:0, yamunanagar:0
+      jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0,
+      panipat:0, rewari:0, rohtak:0, sirsa:0, sonipat:0, yamunanagar:0
     };
 
     function updateCounters(){
