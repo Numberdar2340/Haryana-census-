@@ -1,187 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haryana Census Registration</title>
-  <style>
-    /* Reset & basic styles */
-    * { margin:0; padding:0; box-sizing:border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background:#f0f0f0; display:flex; justify-content:center; align-items:flex-start; min-height:100vh; padding:50px 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haryana Census Registration</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-    /* Form container */
-    .form-container {
-      background:#fff;
-      padding:40px;
-      border-radius:20px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.15);
-      width:100%;
-      max-width:600px;
-    }
+.mac-window {
+    background: #fff;
+    border-radius: 16px;
+    width: 400px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
 
-    h2 { text-align:center; margin-bottom:30px; color:#333; }
+.mac-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #e0e0e0;
+}
 
-    /* Form fields */
-    .form-group { margin-bottom:20px; display:flex; flex-direction:column; }
-    label { margin-bottom:5px; font-weight:600; color:#555; }
-    input[type="text"], input[type="number"], select {
-      padding:12px 15px;
-      border:1px solid #ccc;
-      border-radius:12px;
-      font-size:1em;
-      outline:none;
-      transition:0.3s;
-    }
-    input[type="text"]:focus, input[type="number"]:focus, select:focus {
-      border-color:#007BFF;
-      box-shadow:0 0 5px rgba(0,123,255,0.3);
-    }
+.mac-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
 
-    /* Radio / Checkbox groups */
-    .options { display:flex; gap:15px; flex-wrap:wrap; }
-    .options label { font-weight:normal; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28c840; }
 
-    /* Submit button */
-    button {
-      width:100%;
-      padding:15px;
-      font-size:1.1em;
-      border:none;
-      border-radius:12px;
-      background:#007BFF;
-      color:#fff;
-      cursor:pointer;
-      transition:0.3s;
-    }
-    button:hover { background:#0056b3; }
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
-    /* Responsive */
-    @media(max-width:600px){ .form-container { padding:20px; } }
-  </style>
+form label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form input, form select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+form button {
+    background: #007AFF;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: #005BBB;
+}
+</style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Haryana Census Registration</h2>
-    <!-- Form action: Google Form URL -->
-    <form id="registrationForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfEXAMPLEFORMURL/formResponse" method="POST" target="_blank">
-      
-      <!-- Family Head -->
-      <div class="form-group">
-        <label for="headName">Family Head Name</label>
-        <input type="text" id="headName" name="entry.1111111111" placeholder="Enter Name" required>
-      </div>
 
-      <!-- Marital Status -->
-      <div class="form-group">
-        <label>Marital Status</label>
-        <div class="options">
-          <label><input type="radio" name="entry.2222222222" value="Married" required> Married</label>
-          <label><input type="radio" name="entry.2222222222" value="Unmarried" required> Unmarried</label>
-        </div>
-      </div>
+<div class="mac-window">
+    <div class="mac-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+    </div>
+    <form action="https://forms.gle/ZG4Fv9iXF1t8m4ZV9" method="get" target="_blank">
+        <label for="head">Family Head Name:</label>
+        <input type="text" id="head" name="head" required>
 
-      <!-- Family Members -->
-      <div class="form-group">
-        <label for="membersCount">Number of Family Members</label>
-        <input type="number" id="membersCount" name="entry.3333333333" placeholder="Enter Number" required>
-      </div>
+        <label for="members">Number of Family Members:</label>
+        <input type="number" id="members" name="members" required>
 
-      <!-- Relation -->
-      <div class="form-group">
-        <label>Relation with Head</label>
-        <select name="entry.4444444444" required>
-          <option value="">--Select Relation--</option>
-          <option value="Self">Self</option>
-          <option value="Wife">Wife</option>
-          <option value="Son">Son</option>
-          <option value="Daughter">Daughter</option>
-          <option value="Brother">Brother</option>
-          <option value="Sister">Sister</option>
+        <label for="relation">Relation with Head:</label>
+        <select id="relation" name="relation" required>
+            <option value="">--Select--</option>
+            <option value="self">Self</option>
+            <option value="wife">Wife</option>
+            <option value="son">Son</option>
+            <option value="daughter">Daughter</option>
+            <option value="brother">Brother</option>
+            <option value="sister">Sister</option>
         </select>
-      </div>
 
-      <!-- Age -->
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" id="age" name="entry.5555555555" placeholder="Enter Age" required>
-      </div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
 
-      <!-- Occupation -->
-      <div class="form-group">
-        <label for="occupation">Occupation</label>
-        <select id="occupation" name="entry.6666666666" required>
-          <option value="">--Select Occupation--</option>
-          <option value="Farmer">Farmer</option>
-          <option value="Government Job">Government Job</option>
-          <option value="Private Job">Private Job</option>
-          <option value="Business">Business</option>
-          <option value="Student">Student</option>
-          <option value="Other">Other</option>
+        <label for="married">Marital Status:</label>
+        <select id="married" name="married" required>
+            <option value="">--Select--</option>
+            <option value="married">Married</option>
+            <option value="unmarried">Unmarried</option>
         </select>
-      </div>
 
-      <!-- Study / Education -->
-      <div class="form-group">
-        <label for="study">Education</label>
-        <select id="study" name="entry.7777777777" required>
-          <option value="">--Select Education--</option>
-          <option value="None">None</option>
-          <option value="Primary">Primary</option>
-          <option value="Secondary">Secondary</option>
-          <option value="Higher Secondary">Higher Secondary</option>
-          <option value="Graduate">Graduate</option>
-          <option value="Post Graduate">Post Graduate</option>
-        </select>
-      </div>
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation">
 
-      <!-- Caste -->
-      <div class="form-group">
-        <label for="caste">Caste</label>
-        <select id="caste" name="entry.8888888888" required>
-          <option value="">--Select Caste--</option>
-          <option value="General">General</option>
-          <option value="OBC">OBC</option>
-          <option value="SC">SC</option>
-          <option value="ST">ST</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+        <label for="caste">Caste:</label>
+        <input type="text" id="caste" name="caste">
 
-      <!-- Religion -->
-      <div class="form-group">
-        <label for="religion">Religion</label>
-        <select id="religion" name="entry.9999999999" required>
-          <option value="">--Select Religion--</option>
-          <option value="Hindu">Hindu</option>
-          <option value="Muslim">Muslim</option>
-          <option value="Sikh">Sikh</option>
-          <option value="Christian">Christian</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+        <label for="religion">Religion:</label>
+        <input type="text" id="religion" name="religion">
 
-      <!-- Document Proof -->
-      <div class="form-group">
-        <label>Document Proof</label>
-        <div class="options">
-          <label><input type="checkbox" name="entry.1010101010" value="Aadhar"> Aadhar</label>
-          <label><input type="checkbox" name="entry.1010101010" value="PAN"> PAN</label>
-          <label><input type="checkbox" name="entry.1010101010" value="Passport"> Passport</label>
-          <label><input type="checkbox" name="entry.1010101010" value="DL"> Driving License</label>
-          <label><input type="checkbox" name="entry.1010101010" value="Family ID"> Family ID</label>
-        </div>
-      </div>
+        <label for="study">Education/Study:</label>
+        <input type="text" id="study" name="study">
 
-      <!-- Document Number -->
-      <div class="form-group">
-        <label for="docNumber">Document Number</label>
-        <input type="text" id="docNumber" name="entry.1111111112" placeholder="Enter Document Number">
-      </div>
-
-      <!-- Submit -->
-      <button type="submit">Submit Registration</button>
-
+        <button type="submit">Submit Registration</button>
     </form>
-  </div>
+</div>
+
 </body>
 </html>
