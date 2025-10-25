@@ -130,6 +130,104 @@
     </div>
   </section>
 
+  <section id="census-form" class="container">
+  <h2>Family Registration Form</h2>
+
+  <label>Family Head Name</label>
+  <input type="text" id="headName" placeholder="Enter Family Head Name">
+
+  <label>Marital Status</label>
+  <select id="maritalStatus">
+    <option value="">Select Status</option>
+    <option>Married</option>
+    <option>Unmarried</option>
+  </select>
+
+  <label>Relation with Head</label>
+  <select id="relation">
+    <option value="">Select Relation</option>
+    <option>Son</option>
+    <option>Daughter</option>
+    <option>Wife</option>
+    <option>Father</option>
+    <option>Mother</option>
+    <option>Brother</option>
+    <option>Sister</option>
+  </select>
+
+  <label>Age Group</label>
+  <select id="ageGroup">
+    <option value="">Select Age Group</option>
+    <option>0-5</option>
+    <option>6-12</option>
+    <option>13-18</option>
+    <option>19-35</option>
+    <option>36-50</option>
+    <option>51-65</option>
+    <option>66+</option>
+  </select>
+
+  <label>Caste</label>
+  <select id="caste">
+    <option value="">Select Caste</option>
+    <option>Brahmin</option>
+    <option>Chauhan</option>
+    <option>Rajput</option>
+    <option>Jat</option>
+    <option>SC</option>
+    <option>ST</option>
+    <option>OBC</option>
+    <option>Other</option>
+  </select>
+
+  <label>Religion</label>
+  <select id="religion">
+    <option value="">Select Religion</option>
+    <option>Hindu</option>
+    <option>Muslim</option>
+    <option>Sikh</option>
+    <option>Christian</option>
+    <option>Other</option>
+  </select>
+
+  <label>Occupation</label>
+  <select id="occupation">
+    <option value="">Select Occupation</option>
+    <option>Farmer</option>
+    <option>Business</option>
+    <option>Government Job</option>
+    <option>Private Job</option>
+    <option>Student</option>
+    <option>Other</option>
+  </select>
+
+  <label>Study</label>
+  <select id="study">
+    <option value="">Select Study Level</option>
+    <option>Primary</option>
+    <option>Secondary</option>
+    <option>Graduate</option>
+    <option>Postgraduate</option>
+    <option>Other</option>
+  </select>
+
+  <label>Document Proof</label>
+  <div class="checkbox-group">
+    <input type="checkbox" id="pan" value="PAN"> PAN
+    <input type="checkbox" id="aadhar" value="Aadhar"> Aadhar
+    <input type="checkbox" id="passport" value="Passport"> Passport
+    <input type="checkbox" id="dl" value="Driving License"> DL
+    <input type="checkbox" id="familyid" value="Family ID"> Family ID
+  </div>
+
+  <label>Document Number</label>
+  <input type="text" id="docNumber" placeholder="Enter Document Number">
+
+  <button onclick="submitForm()">Submit Registration</button>
+
+  <div id="preview"></div>
+</section>
+
   <!-- Footer -->
   <footer>
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
