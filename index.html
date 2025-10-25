@@ -8,14 +8,25 @@
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
     a { text-decoration:none; color:inherit; }
+
+    /* 🔹 Top Haryana Banner */
+    .haryana-banner {
+      display:flex; align-items:center; justify-content:space-between;
+      background-color:#ffffff; padding:10px 20px; border-bottom:2px solid #000;
+    }
+    .haryana-banner div { font-weight:bold; font-size:18px; color:#000; }
+    .haryana-banner img { height:70px; width:auto; }
+
     header { display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
     header img { height:50px; }
     header .title { text-align:center; flex:1; }
     header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
     header .title p { font-size:0.9em; color:#333; }
+
     #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
     #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
     #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+
     #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
     #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
     #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
@@ -23,11 +34,24 @@
     .district-card:hover { transform: translateY(-5px); }
     .district-card h3 { margin:0 0 10px 0; color:#333; }
     .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
+
     footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
-    @media(max-width:600px){ .district-card { width:45%; margin-bottom:20px; } header { flex-direction:column; gap:10px; } }
+
+    @media(max-width:600px){
+      .district-card { width:45%; margin-bottom:20px; }
+      header { flex-direction:column; gap:10px; }
+      .haryana-banner { flex-direction:column; gap:10px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🔹 Haryana Sarkar Banner -->
+  <div class="haryana-banner">
+    <div>हरियाणा सरकार</div>
+    <div><img src="https://i.postimg.cc/y38RJg29/haryana-logo.png" alt="Haryana Logo"></div>
+    <div>Government of Haryana</div>
+  </div>
 
   <!-- Header -->
   <header>
