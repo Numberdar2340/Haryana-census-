@@ -4,49 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- ✅ SEO & META TAGS -->
   <title>Haryana District Portal – हरियाणा जिला पोर्टल | Census Data 2025</title>
   <meta name="description" content="Haryana District Portal – हरियाणा के सभी जिलों की जनसंख्या, डेटा, और लाइव काउंटर जानकारी एक ही जगह पर। Created by Dushyant Chauhan." />
   <meta name="keywords" content="Haryana District Portal, हरियाणा जिला पोर्टल, Haryana Census, Haryana Government Data, Haryana Districts, Gurugram Census, Haryana Portal" />
   <meta name="author" content="Dushyant Chauhan" />
   <meta name="robots" content="index, follow" />
 
-  <!-- ✅ Open Graph / Social Share -->
-  <meta property="og:title" content="Haryana District Portal | हरियाणा जिला पोर्टल" />
-  <meta property="og:description" content="हरियाणा के सभी जिलों का लाइव डेटा और जानकारी — Government of Haryana Digital Portal" />
-  <meta property="og:image" content="https://haryana-census.onrender.com/og-image.jpg" />
-  <meta property="og:url" content="https://haryana-census.onrender.com/" />
-  <meta property="og:type" content="website" />
-
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Haryana District Portal" />
-  <meta name="twitter:description" content="हरियाणा जिला पोर्टल - सभी जिलों का डेटा, एक जगह।" />
-  <meta name="twitter:image" content="https://haryana-census.onrender.com/twitter-image.jpg" />
-
-  <!-- ✅ Google Verification -->
-  <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
-
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
+
     a { text-decoration:none; color:inherit; }
-    header { display:flex; align-items:center; padding:15px 50px; background:#fff; border-bottom:2px solid #000; position:sticky; top:0; z-index:1000; }
+
+    header {
+      display:flex; align-items:center; padding:15px 50px;
+      background:#fff; border-bottom:2px solid #000;
+      position:sticky; top:0; z-index:1000;
+    }
+
     header img { height:50px; width:auto; display:block; }
     header .title { text-align:left; margin-left:15px; }
     header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
     header .title p { font-size:1em; color:#333; }
+
+    /* ✅ Live Date-Time Box (top-right) */
+    #datetime {
+      position: fixed;
+      top: 10px;
+      right: 15px;
+      background: #ffffff;
+      color: #000;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.15);
+      z-index: 2000;
+    }
+
     #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
     #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
     #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+
     #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
     #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
+
     #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
+
     .district-card { background:#fff; padding:20px; border-radius:10px; width:150px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
     .district-card:hover { transform: translateY(-5px); }
     .district-card h3 { margin:0 0 10px 0; color:#333; }
     .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
+
     footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
+
     @media(max-width:600px){ 
       .district-card { width:45%; margin-bottom:20px; } 
       header { flex-direction:column; gap:10px; } 
@@ -54,6 +65,9 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Live Date-Time (Top Right) -->
+  <div id="datetime"></div>
 
   <!-- Header -->
   <header>
@@ -146,9 +160,23 @@
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
   </footer>
 
-  <!-- Counter Disabled -->
+  <!-- ✅ Live Date-Time Script -->
   <script>
-    // All counters are frozen. Gurugram = 1
+    function updateDateTime() {
+      const now = new Date();
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      document.getElementById('datetime').textContent = now.toLocaleString('en-IN', options);
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
   </script>
 
 </body>
