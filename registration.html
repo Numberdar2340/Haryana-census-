@@ -17,7 +17,7 @@ body {
 .mac-window {
     background: #fff;
     border-radius: 16px;
-    width: 400px;
+    width: 420px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     overflow: hidden;
 }
@@ -55,7 +55,7 @@ form input, form select {
     padding: 8px 10px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 1em;
 }
 
@@ -73,6 +73,18 @@ form button {
 form button:hover {
     background: #005BBB;
 }
+
+.member-block {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fafafa;
+    margin-bottom: 10px;
+}
+.member-block h4 {
+    margin-top: 0;
+    color: #007AFF;
+}
 </style>
 </head>
 <body>
@@ -83,49 +95,76 @@ form button:hover {
         <div class="dot yellow"></div>
         <div class="dot green"></div>
     </div>
-    <form action="https://forms.gle/ZG4Fv9iXF1t8m4ZV9" method="get" target="_blank">
-        <label for="head">Family Head Name:</label>
-        <input type="text" id="head" name="head" required>
 
+    <form id="censusForm" onsubmit="submitForm(event)">
         <label for="members">Number of Family Members:</label>
-        <input type="number" id="members" name="members" required>
+        <input type="number" id="members" name="members" min="1" max="10" required onchange="generateMembers()">
 
-        <label for="relation">Relation with Head:</label>
-        <select id="relation" name="relation" required>
-            <option value="">--Select--</option>
-            <option value="self">Self</option>
-            <option value="wife">Wife</option>
-            <option value="son">Son</option>
-            <option value="daughter">Daughter</option>
-            <option value="brother">Brother</option>
-            <option value="sister">Sister</option>
-        </select>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-
-        <label for="married">Marital Status:</label>
-        <select id="married" name="married" required>
-            <option value="">--Select--</option>
-            <option value="married">Married</option>
-            <option value="unmarried">Unmarried</option>
-        </select>
-
-        <label for="occupation">Occupation:</label>
-        <input type="text" id="occupation" name="occupation">
-
-        <label for="caste">Caste:</label>
-        <input type="text" id="caste" name="caste">
-
-        <label for="religion">Religion:</label>
-        <input type="text" id="religion" name="religion">
-
-        <label for="study">Education/Study:</label>
-        <input type="text" id="study" name="study">
+        <div id="membersContainer"></div>
 
         <button type="submit">Submit Registration</button>
     </form>
 </div>
+
+<script>
+function generateMembers() {
+    const container = document.getElementById('membersContainer');
+    const count = parseInt(document.getElementById('members').value);
+    container.innerHTML = '';
+
+    if (isNaN(count) || count < 1) return;
+
+    for (let i = 1; i <= count; i++) {
+        const block = document.createElement('div');
+        block.className = 'member-block';
+        block.innerHTML = `
+            <h4>Family Member ${i}</h4>
+            <label>Name:</label>
+            <input type="text" name="member${i}_name" required>
+
+            <label>Relation with Head:</label>
+            <select name="member${i}_relation" required>
+                <option value="">--Select--</option>
+                <option value="self">Self</option>
+                <option value="wife">Wife</option>
+                <option value="son">Son</option>
+                <option value="daughter">Daughter</option>
+                <option value="brother">Brother</option>
+                <option value="sister">Sister</option>
+            </select>
+
+            <label>Age:</label>
+            <input type="number" name="member${i}_age" required>
+
+            <label>Marital Status:</label>
+            <select name="member${i}_married" required>
+                <option value="">--Select--</option>
+                <option value="married">Married</option>
+                <option value="unmarried">Unmarried</option>
+            </select>
+
+            <label>Occupation:</label>
+            <input type="text" name="member${i}_occupation">
+
+            <label>Caste:</label>
+            <input type="text" name="member${i}_caste">
+
+            <label>Religion:</label>
+            <input type="text" name="member${i}_religion">
+
+            <label>Education/Study:</label>
+            <input type="text" name="member${i}_study">
+        `;
+        container.appendChild(block);
+    }
+}
+
+function submitForm(e) {
+    e.preventDefault();
+    alert("✅ Census Family Form Submitted Successfully!");
+    // Yahan tu apna data backend (Google Form / Firebase) me send kar sakta hai
+}
+</script>
 
 </body>
 </html>
