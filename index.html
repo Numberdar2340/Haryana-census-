@@ -3,36 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Haryana District Portal – हरियाणा जिला पोर्टल | Census Data 2025</title>
-  <meta name="description" content="Haryana District Portal – हरियाणा के सभी जिलों की जनसंख्या, डेटा, और लाइव काउंटर जानकारी एक ही जगह पर। Created by Dushyant Chauhan." />
-  <meta name="keywords" content="Haryana District Portal, हरियाणा जिला पोर्टल, Haryana Census, Haryana Government Data, Haryana Districts, Gurugram Census, Haryana Portal" />
-  <meta name="author" content="Dushyant Chauhan" />
-  <meta name="robots" content="index, follow" />
-
+  <title>Haryana District Portal</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
-
     a { text-decoration:none; color:inherit; }
-
-    header {
-      display:flex; align-items:center; padding:15px 50px;
-      background:#fff; border-bottom:2px solid #000;
-      position:sticky; top:0; z-index:1000;
-    }
-
+    /* Header style */
+    header { display:flex; align-items:center; padding:15px 50px; background:#fff; border-bottom:2px solid #000; position:sticky; top:0; z-index:1000; }
     header img { height:50px; width:auto; display:block; }
     header .title { text-align:left; margin-left:15px; }
     header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
     header .title p { font-size:1em; color:#333; }
+    #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
+    #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
+    #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+    #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
+    #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
+    #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
+    .district-card { background:#fff; padding:20px; border-radius:10px; width:150px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .district-card:hover { transform: translateY(-5px); }
+    .district-card h3 { margin:0 0 10px 0; color:#333; }
+    .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
+    footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
+    @media(max-width:600px){ 
+      .district-card { width:45%; margin-bottom:20px; } 
+      header { flex-direction:column; gap:10px; } 
+    }
+  </style>
+</head>
+<body>
 
-  
-  <!-- Header -->
+  <!-- Updated Header with Logo -->
   <header>
+    <!-- Logo Left -->
     <div style="flex-shrink:0;">
       <img src="https://i.ibb.co/7JwPWyxP/1-HR-LOGO-3-22-53-2-removebg-preview.png" alt="Haryana Govt Logo">
     </div>
+
+    <!-- Text Side by Side with Logo -->
     <div class="title">
       <h1>हरियाणा सरकार</h1>
       <p>Government of Haryana</p>
@@ -119,23 +127,21 @@
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
   </footer>
 
-  <!-- ✅ Live Date-Time Script -->
   <script>
-    function updateDateTime() {
-      const now = new Date();
-      const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      };
-      document.getElementById('datetime').textContent = now.toLocaleString('en-IN', options);
+    let districtData = {
+      ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:0, hissar:0,
+      jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0,
+      panipat:0, rewari:0, rohtak:0, sirsa:0, sonipat:0, yamunanagar:0
+    };
+
+    function updateCounters(){
+      for(let district in districtData){
+        districtData[district] += Math.floor(Math.random()*5);
+        let elem = document.getElementById(district+"-count");
+        if(elem) elem.innerText = districtData[district];
+      }
     }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+    setInterval(updateCounters, 2000);
   </script>
 
 </body>
