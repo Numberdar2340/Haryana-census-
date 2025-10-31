@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,14 +8,31 @@
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body { background:#f0f0f0; }
     a { text-decoration:none; color:inherit; }
-    header { display:flex; align-items:center; padding:15px 50px; background:#fff; border-bottom:2px solid #000; position:sticky; top:0; z-index:1000; }
+
+    /* Header */
+    header { 
+      display:flex; align-items:center; justify-content:space-between;
+      padding:15px 50px; background:#fff; border-bottom:2px solid #000; 
+      position:sticky; top:0; z-index:1000;
+    }
+    header .left { display:flex; align-items:center; gap:15px; }
     header img { height:50px; width:auto; display:block; }
-    header .title { text-align:left; margin-left:15px; }
-    header .title h1 { font-size:1.5em; font-weight:bold; color:#000; }
-    header .title p { font-size:1em; color:#333; }
+    header .title h1 { font-size:1.5em; font-weight:bold; color:#000; margin:0; }
+    header .title p { font-size:1em; color:#333; margin:0; }
+
+    /* About button */
+    .about-btn {
+      background:#007BFF; color:#fff; padding:10px 20px; border-radius:8px;
+      font-weight:bold; transition:0.3s;
+    }
+    .about-btn:hover { background:#0056b3; }
+
+    /* District selection */
     #district-select-section { padding:40px 20px; text-align:center; background:#e9ecef; }
     #district-select-section h2 { font-size:2em; margin-bottom:20px; color:#333; }
     #district-dropdown { padding:10px 15px; font-size:1em; border-radius:5px; border:1px solid #ccc; }
+
+    /* Counter Section */
     #district-counter { background:#f8f8f8; padding:50px 0; text-align:center; }
     #district-counter h2 { font-size:2em; margin-bottom:30px; color:#333; }
     #counter-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; }
@@ -23,10 +40,14 @@
     .district-card:hover { transform: translateY(-5px); }
     .district-card h3 { margin:0 0 10px 0; color:#333; }
     .district-card p { font-size:1.5em; font-weight:bold; margin:0; color:#007BFF; }
+
+    /* Footer */
     footer { text-align:center; padding:20px; background:#222; color:#fff; margin-top:30px; }
+
     @media(max-width:600px){ 
       .district-card { width:45%; margin-bottom:20px; } 
-      header { flex-direction:column; gap:10px; } 
+      header { flex-direction:column; gap:10px; }
+      .about-btn { margin-top:10px; }
     }
   </style>
 </head>
@@ -34,13 +55,16 @@
 
   <!-- Header -->
   <header>
-    <div style="flex-shrink:0;">
+    <div class="left">
       <img src="https://i.ibb.co/7JwPWyxP/1-HR-LOGO-3-22-53-2-removebg-preview.png" alt="Haryana Govt Logo">
+      <div class="title">
+        <h1>हरियाणा सरकार</h1>
+        <p>Government of Haryana</p>
+      </div>
     </div>
-    <div class="title">
-      <h1>हरियाणा सरकार</h1>
-      <p>Government of Haryana</p>
-    </div>
+
+    <!-- ✅ About page link -->
+    <a href="about.html" class="about-btn">About</a>
   </header>
 
   <!-- District selection -->
@@ -73,7 +97,7 @@
     </select>
   </section>
 
-  <!-- Registration Button (Direct Google Form Link) -->
+  <!-- Registration Button -->
   <div style="text-align:center; margin:30px 0;">
     <a href="https://forms.gle/C1kWxBRebiJ85NYi7" target="_blank" style="
         display:inline-block;
@@ -98,7 +122,7 @@
       <div class="district-card"><h3>Charkhi Dadri</h3><p id="charkhi-dadri-count">0</p></div>
       <div class="district-card"><h3>Faridabad</h3><p id="faridabad-count">0</p></div>
       <div class="district-card"><h3>Fatehabad</h3><p id="fatehabad-count">0</p></div>
-      <div class="district-card"><h3>Gurugram</h3><p id="gurugram-count">1</p></div>
+      <div class="district-card"><h3>Gurugram</h3><p id="gurugram-count">3</p></div>
       <div class="district-card"><h3>Hissar</h3><p id="hissar-count">0</p></div>
       <div class="district-card"><h3>Jhajjar</h3><p id="jhajjar-count">0</p></div>
       <div class="district-card"><h3>Jind</h3><p id="jind-count">0</p></div>
@@ -118,25 +142,17 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     © 2025 Haryana Government. All Rights Reserved. | Designed & Maintained by Dushyant Chauhan
   </footer>
 
   <script>
     let districtData = {
-      ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:0, hissar:0,
+      ambala:0, bhiwani:0, "charkhi-dadri":0, faridabad:0, fatehabad:0, gurugram:3, hissar:0,
       jhajjar:0, jind:0, kaithal:0, karnal:0, kurukshetra:0, mahendragarh:0, palwal:0,
       panipat:0, rewari:0, rohtak:0, sirsa:0, sonipat:0, yamunanagar:0
     };
-
-    function updateCounters(){
-      for(let district in districtData){
-        districtData[district] += Math.floor(Math.random()*5);
-        let elem = document.getElementById(district+"-count");
-        if(elem) elem.innerText = districtData[district];
-      }
-    }
-    setInterval(updateCounters, 2000);
   </script>
 
 </body>
